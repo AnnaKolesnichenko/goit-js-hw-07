@@ -36,7 +36,7 @@ function onImageZoomed(event) {
     const showingImage = event.target;
     console.log(showingImage);
     const instance = basicLightbox.create(
-        `<img src="${showingImage.dataset.source}" width="800" height="600">`
+        `<img src="${showingImage.dataset.source}" width="800" height="600" >`
         )
     instance.show();
 
