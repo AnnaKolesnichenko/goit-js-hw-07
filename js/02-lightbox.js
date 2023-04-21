@@ -33,14 +33,6 @@ cardsGallery.addEventListener('click', onGalleryShow);
 
 
 
-/*galleryEl.addEventListener('click', onImageClik) 
- 
-function onImageClick(event) { 
-    event.preventDefault(); 
-    const lightbox = new SimpleLightbox('.gallery__item a',  
-    {captionDelay: 250, close: true, enableKeyboard: true});    
-    lightbox.open(); 
-}
-*/
+
 
 
