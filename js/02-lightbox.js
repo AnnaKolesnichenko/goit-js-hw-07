@@ -13,24 +13,34 @@ function onCardsGalleryCreate(items) {
             <a class="gallery__link" href="${item.original}">
                 <img class="gallery__image" 
                     src="${item.preview}" 
-                    alt="${item.alt}" 
-                    title="${item.alt}"/>
+                    alt="${item.alt}" />
             </a>
         </li>          
         `;
     }).join('');        
 }
 const cardsOfGallery = onCardsGalleryCreate(galleryItems);
-cardsGallery.insertAdjacentHTML('afterbegin', cardsOfGallery);
-console.log(cardsGallery);
+cardsGallery.insertAdjacentHTML('beforeend', cardsOfGallery);
 
-
-cardsGallery.addEventListener('click', function(e) {
+function onGalleryShow(e) {
     e.preventDefault();
     const lightbox = new SimpleLightbox('.gallery__item a', 
-    {captionDelay: 250, close: true, enableKeyboard: true});   
-    lightbox.open();
+     {captionDelay: 250, enableKeyboard: true, captionData: 'alt'});
+     lightbox.open();
+}
 
-});
-//new SimpleLightbox('.gallery__item a', {captionDelay: 250}, {enableKeyboard: true}, {captionsData: 'alt'}, {captions: true});
+cardsGallery.addEventListener('click', onGalleryShow);
+
+
+
+/*galleryEl.addEventListener('click', onImageClik) 
+ 
+function onImageClick(event) { 
+    event.preventDefault(); 
+    const lightbox = new SimpleLightbox('.gallery__item a',  
+    {captionDelay: 250, close: true, enableKeyboard: true});    
+    lightbox.open(); 
+}
+*/
+
 
