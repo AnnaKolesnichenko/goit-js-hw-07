@@ -22,24 +22,15 @@ function onCardsGalleryCreate(items) {
 }
 const cardsOfGallery = onCardsGalleryCreate(galleryItems);
 cardsGallery.insertAdjacentHTML('afterbegin', cardsOfGallery);
+console.log(cardsGallery);
 
-const div = document.createElement('div');
-div.id = 'lightbox';
-document.body.appendChild(div);
 
-/*function onLightBoxCreate(e) {
+cardsGallery.addEventListener('click', function(e) {
     e.preventDefault();
+    const lightbox = new SimpleLightbox('.gallery__item a', 
+    {captionDelay: 250, close: true, enableKeyboard: true});   
+    lightbox.open();
 
-    const image = e.target;
-     const lightbox = new SimpleLightbox('.gallery__item .gallery__link', 
-                                        {captionDelay: 250},
-                                        {close: true},
-                                        {enableKeyboard: true});
-   
-    
-}
-//const lightBox = $('.gallery__item a').SimpleLightbox();
-
-cardsGallery.addEventListener('click', onLightBoxCreate);*/
-new SimpleLightbox('.gallery__item a', {captionDelay: 250}, {enableKeyboard: true}, {captionsData: 'alt'}, {captions: true});
+});
+//new SimpleLightbox('.gallery__item a', {captionDelay: 250}, {enableKeyboard: true}, {captionsData: 'alt'}, {captions: true});
 
