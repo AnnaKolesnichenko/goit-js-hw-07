@@ -35,28 +35,24 @@ function onImageZoomed(event) {
 
     const showingImage = event.target;
     console.log(showingImage);
-    const instance = basicLightbox.create(
+   /* const instance = basicLightbox.create(
         `<img src="${showingImage.dataset.source}" width="800" height="600" >`
         )
-    instance.show();
+    instance.show();*/
 
-    //closing from keyboard
-    cardsGallery.addEventListener('keydown', (e) => {
-        if(e.key === 'Escape') {
-            instance.close();
-        }
-    })
+    const instance = basicLightbox.create(`<img src="${showingImage.dataset.source}" width="800" height="600" >`, {
+		onShow: (instance) => window.addEventListener('keydown', function escClose(e) {
+            if(e.key === 'Escape') {
+                instance.close();
+            }
+        }),
+		onClose: (instance) => window.removeEventListener('keydown', function escClose(e) {
+            if(e.key === 'Escape') {
+                instance.close();
+            }
+        }) 
+	})
+    instance.show();
 }
 
-
 cardsGallery.addEventListener ('click', onImageZoomed);  
-
-
-    
-
-/*onst onZoomedImage = galleryItems.map(item => {
-    const instance = basicLightbox.create(
-        `<img src="${item.original}" width="800" height="600">`
-        )
-    instance.show();
-})*/
