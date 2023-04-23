@@ -41,17 +41,16 @@ function onImageZoomed(event) {
     instance.show();*/
 
     const instance = basicLightbox.create(`<img src="${showingImage.dataset.source}" width="800" height="600" >`, {
-		onShow: (instance) => window.addEventListener('keydown', function escClose(e) {
-            if(e.key === 'Escape') {
-                instance.close();
-            }
-        }),
-		onClose: (instance) => window.removeEventListener('keydown', function escClose(e) {
-            if(e.key === 'Escape') {
-                instance.close();
-            }
-        }) 
+		onShow: (instance) => window.addEventListener('keydown', escClose),
+		onClose: (instance) => window.removeEventListener('keydown', escClose) 
 	})
+
+    function escClose(e) {
+        if(e.key === 'Escape') {
+            instance.close();
+        }
+    }
+
     instance.show();
 }
 

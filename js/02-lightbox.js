@@ -29,8 +29,12 @@ cardsGallery.insertAdjacentHTML('beforeend', cardsOfGallery);
      lightbox.open();
 }*/
 
-cardsGallery.addEventListener('click', (e) => {
+function preventLoad(e) {
     e.preventDefault();
+}
+
+cardsGallery.addEventListener('click', (e) => {
+    preventLoad(e);
     const lightbox = new SimpleLightbox('.gallery__item a', 
      {captionDelay: 250, enableKeyboard: true, captionData: 'alt', captions: true});
      
