@@ -13,7 +13,7 @@ function onCardsGalleryCreate(items) {
             <a class="gallery__link" href="${item.original}">
                 <img class="gallery__image" 
                     src="${item.preview}" 
-                    alt="${item.alt}" />
+                    alt="${item.description}" />
             </a>
         </li>          
         `;
@@ -36,7 +36,7 @@ function preventLoad(e) {
 cardsGallery.addEventListener('click', (e) => {
     preventLoad(e);
     const lightbox = new SimpleLightbox('.gallery__item a', 
-     {captionDelay: 250, enableKeyboard: true, captionData: 'alt', captions: true});
+     {captionDelay: 250, enableKeyboard: true, captionsData: 'alt', captions: true});
      
 });
 
